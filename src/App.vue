@@ -17,7 +17,7 @@
         <WeatherTime />
         <SearchInp @contextmenu.stop />
         <AllFunc @contextmenu.stop />
-        <Footer />
+<!--        <Footer />-->
         <!-- 状态切换 -->
         <Transition name="fade">
           <div
@@ -61,7 +61,7 @@
       </main>
       <div v-else id="loading">
         <img src="/icon/logo.png" alt="logo" class="logo" />
-        <span class="tip">开发中</span>
+        <span class="tip">努力加载中</span>
       </div>
     </Transition>
   </Provider>
