@@ -26,16 +26,22 @@ const bgUrl = ref(null);
 const imgTimeout = ref(null);
 const emit = defineEmits(["loadComplete"]);
 
-// 壁纸随机数
-// 请依据文件夹内的图片个数修改 Math.random() 后面的第一个数字
-const bgRandom = Math.floor(Math.random() * 3 + 1);
+/* 获取随机整数 */
+const randomNum = (m,n) =>{
+  var num = Math.floor(Math.random()*(m - n) + n);
+  return num;
+}
+
+
+/* 获取1-50之间的随机整数 */
+const bgRandom = randomNum(1,51);
 
 // 赋值壁纸
 const setBgUrl = () => {
   const { backgroundType } = set;
   switch (backgroundType) {
     case 0:
-      bgUrl.value = `/background/bg${bgRandom}.jpg`;
+      bgUrl.value = `/background/background${bgRandom}.jpg`;
       break;
     case 1:
       const isMobile = window.innerWidth < 768;
@@ -51,7 +57,7 @@ const setBgUrl = () => {
       bgUrl.value = set.backgroundCustom;
       break;
     default:
-      bgUrl.value = `/background/bg${bgRandom}.jpg`;
+      bgUrl.value = `/background/background${bgRandom}.jpg`;
       break;
   }
 };
@@ -74,7 +80,7 @@ const imgAnimationEnd = () => {
 const imgLoadError = () => {
   console.error("壁纸加载失败：", bgUrl.value);
   $message.error("壁纸加载失败，已临时切换回默认");
-  bgUrl.value = `/background/bg${bgRandom}.jpg`;
+  bgUrl.value = `/background/background${bgRandom}.jpg`;
 };
 
 onMounted(() => {
