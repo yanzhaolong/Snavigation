@@ -71,7 +71,7 @@ const timeData = ref({});
 const timeInterval = ref(null);
 
 // 天气数据
-const weatherShow = ref(true);
+const weatherShow = ref(false);
 const weatherData = ref({});
 
 // 更新时间
@@ -132,7 +132,7 @@ onMounted(() => {
   updateTimeData();
   timeInterval.value = setInterval(updateTimeData, 1000);
   // 天气
-  //getWeatherData();
+  getWeatherData();
 });
 
 onBeforeUnmount(() => {
